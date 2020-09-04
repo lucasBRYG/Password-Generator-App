@@ -1,11 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  </head>
+  <body style="background-image: url(https://cdn.britannica.com/08/98408-050-6C806B94/Skyline-Baltimore-Md.jpg)">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <title class="navbar-brand">Maker BRYG</title>
     
-</body>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    
+
+<main class ="containter">
+    <div class ="row">
+        <div class="col-md-2"></div>
+        <div class = "col-md-8 card m-3 p-3">
+            <div class="wrapper">
+                <header>
+                    <h1>Password Generator</h1>
+                </header>
+                <div class=>
+                <div class="card-header">
+                    <h2>Generate a Password</h2>
+                </div>
+                <div class="card-body">
+                    <textarea
+                        readonly
+                        id="password"
+                        placeholder="Your Secure Password"
+                        aria-label="Generated Password"
+                        value =""
+                    ></textarea>
+                </div>
+                    <div>
+                        <button id="generate" class="btn btn-danger">Generate Password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<!-- 
+    <div class="wrapper">
+      <header class ="row">
+        <h1 class ="col-md-4 m-3">Password Generator</h1>
+      </header>
+      <div class="card row">
+        <div class="card-header">
+          <h2>Generate a Password</h2>
+        </div>
+        <div class="card-body">
+          <textarea
+            readonly
+            id="password"
+            placeholder="Your Secure Password"
+            aria-label="Generated Password"
+          ></textarea>
+        </div>
+        <div class="card-footer">
+          <button id="generate" class="btn">Generate Password</button>
+        </div>
+      </div>
+    </div> -->
+    <script src="script.js"></script>
+  </body>
 </html>
