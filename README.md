@@ -21,3 +21,5 @@ THEN the password is either displayed in an alert or written to the page
 (9-6-20)
 App works, fullfills all criteria
 
+try it out!
+https://lucasbryg.github.io/Password-Generator-App/
