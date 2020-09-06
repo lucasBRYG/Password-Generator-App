@@ -1,94 +1,131 @@
-function approprateLength(){
-  var userLength = prompt("How many characters do you want your new password to be? The best passwords are between 8 and 128 Characters");
-  parseInt(userLength);
-  if (userLength <= 128 && userLength >= 8){
-    console.log(userLength);
-    return userLength
-  }else{
-    while(userLength > 128 || userLength < 8){
-      userLength = prompt("Make sure you enter a number between 8 and 128");
-      parseInt(userLength);
-
-      console.log(userLength);
-
-    }
-    return userLength
+//a function that shuffles the characters in a given string
+function shuffle(charString){
+  //this loop will run once for every character in the string
+  for (var i = charString.length - 1; i > 0; i--) {
+      //the variable j is initialized at the beggining of each loop, and becomes a random number between 0 and i
+      var j = Math.floor(Math.random() * (i + 1));
+      //the variable x is initialized at the begginging of each loop, and becomes the value of the [i]th character in the string
+      var x = charString[i];
+      //the value at the [i]th index is changed to the value at the [j]th index
+      charString.replace(charString[i], charString[j]);
+      //the value at the [j]th index is changed to x, which is holding the original value at the [i]th index
+      charString.replace(charString[j], x);
   }
+  return charString;
 }
 
+
+//function to evaluate input for length of password.
+function appropriateLength(){
+  //get user input for length of password
+  var userLength = prompt("How many characters do you want your new password to be? The best passwords are between 8 and 128 Characters");
+  //turn input into a number
+  userLength = parseInt(userLength);
+  //IF: number value of input is "NaN" or outside desired bounds, it enters loop...
+  while(isNaN(userLength) || userLength < 8 || userLength > 128){
+    //THEN:
+    //Prompt user to give valid input
+    userLength = prompt("Make sure you enter a number between 8 and 128");
+    //turn input into a number
+    userLength = parseInt(userLength);
+    //IF: input is still "NaN" or out of bounds, re-enter loop...
+  }
+  //once we are sure we have a valid length input, we return it to be used
+  return userLength
+}
+
+//Function evaluates user criteria and returns the string holding characters to be used
+function appropriateCriteria(){  
+  //this variable will be used to count the selected criteria
+  var confCount = 0;
+  //whie loop is entered. IF: the user selects less than 2 critera...
+  while (confCount < 2){
+    confCount = 0;
+    //this alert informs the user to select criteria and that they must select at least 2
+    alert("The best passwords use a combination of lower and uppercase letters, numbers, and special characters. Please select which you would like to be used. (Minimum of 2)");
+    //this variable will hold the string of all charactes that the user would like in their generated password
+    var desiredCharacters = "";
+    // this variable will be a boolean value; true if they confirm, false if they cancel
+    var lowercase = confirm("Do you want lowercase letters used?");
+    //IF: lowercase is true...
+    if (lowercase){
+      //THEN: add lowercase letters to the string of returned characters
+      desiredCharacters = desiredCharacters + "abcdefghijklmnopqrstuvwxyz";
+      //THEN: add 1 to confirmation count
+      confCount ++
+    }
+    //variable will be a boolean value; true if they confirm, false if they cancel
+    var uppercase = confirm("Do you want uppercase letters used?");
+    //IF: uppercase is true...
+    if (uppercase){
+      //THEN: add uppercase letters to the string of returned characters
+      desiredCharacters = desiredCharacters + "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      //THEN: add 1 to confirmation count
+      confCount ++
+    }
+    //variable will be a boolean value; true if they confirm, false if they cancel
+    var numbers = confirm("Do you want numbers used?");
+    //IF: numbers us true ...
+    if (numbers){
+      //THEN: add lowercase letters to the string of returned characters
+      desiredCharacters = desiredCharacters + "0123456789";
+      //THEN: add 1 to confirmation count
+      confCount ++
+    }
+    //variable will be a boolean value; true if they confirm, false if they cancel
+    var specials = confirm("Do you want special charcters used?");
+    //IF: specials is true...
+    if (specials){
+      //THEN: add lowercase letters to the string of returned characters
+      desiredCharacters = desiredCharacters + "@%+/'!#$^?:,)(}{][~-_.";
+      //THEN: add 1 to confirmation count
+      confCount ++
+    }
+    //WHEN: the user has selected two or more criteria, the loop exits
+  }
+  //changes the string of characters held by desiredCharacters to an array of shuffled characters
+  desiredCharacters = shuffle(desiredCharacters);
+  //returns the array of shuffled characters to be used
+  return desiredCharacters;
+}
+
+
+//function to generate and return the random password
 function generatePassword(){
 
-  var length = approprateLength()
-  console.log(userLength)
-  // var upperChar = confirm("Would you like to use Upper case letters, as well as lower case?");
-  // var numChar = confirm("Would you like random numbers used to generate it?");
-  // var specChar = confirm("Would you like random special characters used to generate it?");
-  // var qualifies
-  // console.log(length + upperChar + numChar + specChar);
-  // console.log(length + " " + chars)
-  // if(length >= 8 && length <= 128)
-  // {
-  //   var randPass = "";
-  //   var letters = "abcdefghijklmnopqrstuvwxyz"
-  //   var bigLetters = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ"
-  //   var Nums = "1234567890"
-  //   var specials = ",./[]!@#$%^&*()<>?+=-";
-  //   if(chars){
-  //     var allChars = ",./[]!@#$%^&*()<>?+=-aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ1234567890"
-  //     for (var i = 0; i < length; i++){
-  //       var randNum = Math.floor(Math.random() * allChars.length)
-  //       randPass = randPass + allChars.substring(randNum, randNum + 1);
-  //     }
-
-
-  //   }else{
-  //     for (var i = 0; i < length; i++){
-  //       var randNum = Math.floor(Math.random() * letters.length)
-  //       randPass = randPass + letters.substring(randNum, randNum + 1);
-  //     }
-  //   }
-  //   console.log(letters[3]);
-  //   console.log(randPass);
-
-
-  // }else if (length < 8){
-  //   alert("Passwords of less than 8 characters aren't secure. Try again");
-  // } else {
-  //   alert("That's a lot of characters. Let's try again with a smaller password.");
-  // }
-  // return randPass;
+  //The value of length is the number passed from appropriate length
+  var length = appropriateLength();
+  //The value of userChars is the array generated by the function
+  var userChars = appropriateCriteria();
+  //This value is initialized as an empty string and will hold the randomly generated password
+  var randPass = "";
+  //The loop runs i times, where i is the length variable
+  for (var i = 0; i < length; i++){
+    //here we add a random character from the userChars array to our randPass string
+    randPass += userChars[Math.floor(Math.random() * (userChars.length-1))]
+  }
+  //we can shuffle randPass to add another layer of simulated randomness
+  randPass = shuffle(randPass);
+  //returns the randomly generated and shuffled string to be used
+  return randPass;
 }
 
-// furd);
-// }
-// letterTest();nction letterTest () {
-//   var lettArr = ['a', 'b', 'c', 'd'];
-//   var myWord = "";
-//   for(var i = 0; i < lettArr.length; i++){
-//     myWord = myWord + lettArr[i]
-//   }
-//   console.log(myWo
 
-// // Assignment Code
-
-// function criteria(){
-//     var criteria = [length, specialChar, capitalChar, numChar];
-//     criteria[0] = prompt("How long do you need your Password to be?");
-//     criterio[1] = prompt("");
-// }
-
+//this variable holds the element object with the #id generate.
 var generateBtn = document.body.querySelector("#generate");
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
+  //this variable becomes the value generated by the generatePassword function
   var password = generatePassword();
+  //this varable holds the element object with the #id password
   var passwordText = document.querySelector("#password");
-
+  //the value of the passwordText element is changed to the value of password
   passwordText.value = password;
 
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 
