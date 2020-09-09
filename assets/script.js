@@ -39,10 +39,10 @@ function appropriateCriteria(){
   //this variable will be used to count the selected criteria
   var confCount = 0;
   //whie loop is entered. IF: the user selects less than 2 critera...
-  while (confCount < 2){
+  while (confCount < 1){
     confCount = 0;
     //this alert informs the user to select criteria and that they must select at least 2
-    alert("The best passwords use a combination of lower and uppercase letters, numbers, and special characters. Please select which you would like to be used. (Minimum of 2)");
+    alert("The best passwords use a combination of lower and uppercase letters, numbers, and special characters. Please select which you would like to be used. (Choose at least one)");
     //this variable will hold the string of all charactes that the user would like in their generated password
     var desiredCharacters = "";
     // this variable will be a boolean value; true if they confirm, false if they cancel
